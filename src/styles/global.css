@@ -3,8 +3,8 @@
 @import url('https://unpkg.com/ress/dist/ress.min.css');
 
 :root {
-    --textColor: #fff;
-    /* --bgColor: #0008DE; */
+    /* --textColor: #fe9328; */
+    --textColor: #244bff;
 }
 li {
     list-style: none;
@@ -18,6 +18,6 @@ body {
     font-family: 'DotGothic16', sans-serif;
     box-sizing: border-box;
     margin: 0;
-    background-image: url(/music-website/src/assets/images/bg.png);
-    /* background: '../assets/images/bg.png'; */
+    background-image: url(../../public/images/bg.png);
+    background-size: cover;
 }

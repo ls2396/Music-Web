@@ -43,7 +43,7 @@ p:nth-child(8){
     margin-bottom: 7.5rem;
 }
 
-	/* #home_middle
+/* #home_middle
 ================================================== */
 .title h3{
     font-size: 8px;
@@ -56,4 +56,24 @@ p:nth-child(8){
 }
 .li_group span{
     flex: right;
+}
+
+/* #home_right
+================================================== */
+.home_right{
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    z-index: 1;
+}
+.home_right img{
+    width: 380px;
+    height: 380px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: opacity 0.2s ease;
+}
+.home_right img .hidden{
+    opacity: 0;
 }
