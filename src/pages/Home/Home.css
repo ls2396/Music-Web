@@ -5,10 +5,10 @@
     position: relative;
 }
 .home_left{
-    width: 400px;
     position: sticky;
     top: 50px;
     align-self: flex-start;
+    margin-right: 9rem;
 }
 p,
 a,
@@ -45,11 +45,8 @@ p:nth-child(8){
 
 	/* #home_middle
 ================================================== */
-.home_middle{
-    margin-left: 10rem;
-}
 .title h3{
-    font-size: 12px;
+    font-size: 8px;
     margin-bottom: 1.5rem;
 }
 .li_group{

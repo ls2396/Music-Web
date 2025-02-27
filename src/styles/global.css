@@ -4,7 +4,7 @@
 
 :root {
     --textColor: #fff;
-    --bgColor: #0008DE;
+    /* --bgColor: #0008DE; */
 }
 li {
     list-style: none;
@@ -18,5 +18,6 @@ body {
     font-family: 'DotGothic16', sans-serif;
     box-sizing: border-box;
     margin: 0;
-    background-color: var(--bgColor);
+    background-image: url(/music-website/src/assets/images/bg.png);
+    /* background: '../assets/images/bg.png'; */
 }
