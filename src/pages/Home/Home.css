@@ -45,7 +45,7 @@ p:nth-child(8){
 
 /* #home_middle
 ================================================== */
-.title h3{
+h3{
     font-size: 8px;
     margin-bottom: 1.5rem;
 }
@@ -54,7 +54,7 @@ p:nth-child(8){
     justify-content: space-between;
     margin-bottom: 3rem;
 }
-.li_group span{
+span{
     flex: right;
 }
 
@@ -74,6 +74,10 @@ p:nth-child(8){
     right: 0;
     transition: opacity 0.2s ease;
 }
-.home_right img .hidden{
+.hidden{
     opacity: 0;
+}
+.img_reveal-hover {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }

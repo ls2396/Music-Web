@@ -3,8 +3,8 @@
 @import url('https://unpkg.com/ress/dist/ress.min.css');
 
 :root {
-    /* --textColor: #fe9328; */
-    --textColor: #244bff;
+    --textColor: #fe9328;
+    /* --textColor: #3f62ff; */
 }
 li {
     list-style: none;

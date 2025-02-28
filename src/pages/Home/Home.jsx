@@ -1,19 +1,23 @@
 import './Home.css';
 import '../../styles/global.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { initImageHoverEffect } from '../../../public/js/imageHoverEffect';
-
+import { initMusicPlayer } from '../../../public/js/musicPlayer';
 
 function Home() {
+    const [tracks, setTracks] = useState([]);
 
     useEffect(() => {
-        initImageHoverEffect(); 
-        return () => {
-            const triggers = [...document.querySelectorAll('.img-reveal-hover')];
-            triggers.forEach(trig => {
-                trig.removeEventListener('mouseenter', () => {});
-            });
-        };
+
+        fetch('/src/assets/spotifyTracks.json')
+            .then(response => response.json())
+            .then(data => {
+                console.log('Loaded Tracks:', data);
+                setTracks(data);
+                initMusicPlayer();
+                initImageHoverEffect(data);
+            })
+            .catch(error => console.error('加载 JSON 失败:', error));
     }, []);
 
     return (
@@ -33,141 +37,33 @@ function Home() {
                 <p>Name / Album</p>
                 <div className='title'>
                     <ul>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>My Name / The Mixtape</a>
-                                <span>2010年10月13日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>浪子回頭 / Cartoon Character</a>
-                                <span>2017年11月04日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>真夜中のドア〜stay with me / UP!</a>
-                                <span>1979年11月05日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>벌써 일년(Already One Year) / Brown Eyes</a>
-                                <span>2001年06月07日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>隆裡電絲 / 隆裡電絲</a>
-                                <span>2022年7月17日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>HUMBLE. / DAMN.</a>
-                                <span>2017年03月30日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>グッバイバイ / グッバイバイ</a>
-                                <span>2024年08月21日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>You(=i) / RED PLANET</a>
-                                <span>2016年08月29日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>Pure Water / A NEW WORLD</a>
-                                <span>2009年10月30日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>愛錯 / Shangri-La</a>
-                                <span>2004年12月31日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>Memories / Songs About Jane</a>
-                                <span>2019年09月20日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>Not Like Us / Not Like Us</a>
-                                <span>2024年05月04日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>Everywhere we go / 三角度</a>
-                                <span>2012年07月27日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>ドライフラワー / 壱</a>
-                                <span>2020年10月25日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>孤獨材料 / Single</a>
-                                <span>2024年01月05日</span>
-                            </div>
-                        </li>
-                        <li className='img-reveal-hover'>
-                            <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
-                            <div className='li_group'>
-                                <a href='www.ls2396.cn' target='_blank'>Slide (feat. Frank Ocean & Migos)  / Funk Wav Bounces Vol. 1</a>
-                                <span>2017年02月23日</span>
-                            </div>
-                        </li>
+                        {tracks.map(track => (
+                            <li
+                                key={track.id}
+                                className='img_reveal-hover'
+                                data-track-id={track.id}>
+                                data-preview={track.preview_url || ""} 
+                                <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
+                                <div className='li_group'>
+                                    <a href='www.ls2396.cn' target='_blank'>{track.title}</a>
+                                    <span>{track.date}</span>
+                                </div>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
             <div className='home_right'>
-                <img className='img-reveal hidden' src="/images/1.png" alt="" />
-                <img className='img-reveal hidden' src="/images/2.png" alt="" />
-                <img className='img-reveal hidden' src="/images/3.png" alt="" />
-                <img className='img-reveal hidden' src="/images/4.png" alt="" />
-                <img className='img-reveal hidden' src="/images/5.png" alt="" />
-                <img className='img-reveal hidden' src="/images/6.png" alt="" />
-                <img className='img-reveal hidden' src="/images/7.png" alt="" />
-                <img className='img-reveal hidden' src="/images/8.png" alt="" />
-                <img className='img-reveal hidden' src="/images/9.png" alt="" />
-                <img className='img-reveal hidden' src="/images/10.png" alt="" />
-                <img className='img-reveal hidden' src="/images/11.png" alt="" />
-                <img className='img-reveal hidden' src="/images/12.png" alt="" />
-                <img className='img-reveal hidden' src="/images/13.png" alt="" />
-                <img className='img-reveal hidden' src="/images/14.png" alt="" />
-                <img className='img-reveal hidden' src="/images/15.png" alt="" />
-                <img className='img-reveal hidden' src="/images/16.png" alt="" />
+                {[...Array(16)].map((_, index) => (
+                    <img
+                        key={index}
+                        className='img_reveal hidden'
+                        src={`/images/${index + 1}.png`}
+                        alt=""
+                    />
+                ))}
             </div>
         </div>
-
     );
 }
 
