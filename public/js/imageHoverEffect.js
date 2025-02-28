@@ -1,5 +1,4 @@
 import gsap from 'gsap';
-import { playTrack, stopTrack } from './musicPlayer';
 
 export function initImageHoverEffect(tracks) {
     const imgs = [...document.querySelectorAll('.img_reveal')];
@@ -18,13 +17,12 @@ export function initImageHoverEffect(tracks) {
     });
 
     triggers.forEach((trig, index) => {
+        const youtubeId = trig.dataset.youtubeId || tracks[index]?.youtubeId;
 
         trig.addEventListener('mouseenter', e => {
-            console.log('Mouse Enter:', e.target); // 调试日志
+            console.log('Mouse Enter:', e.target);
             const activeIndex = triggers.indexOf(e.target);
-            console.log('Active Index:', activeIndex); // 调试日志
-            
-            const trackId = trig.dataset.trackId || tracks[index]?.id;
+            console.log('Active Index:', activeIndex);
 
             // 移除所有触发器的 active 类
             triggers.forEach(t => t.classList.remove('active'));
@@ -48,17 +46,26 @@ export function initImageHoverEffect(tracks) {
                 });
             });
 
-            // 播放音乐
-            if (trackId) {
-                console.log('Calling playTrack with Track ID:', trackId); // 调试日志
-                playTrack(trackId);
+            // 播放 YouTube 音频
+            if (youtubeId) {
+                console.log('Playing YouTube Audio with ID:', youtubeId);
+                const youtubePlayer = document.getElementById("youtubePlayer");
+                if (youtubePlayer) {
+                    youtubePlayer.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=0&loop=1&controls=0&showinfo=0`;
+                } else {
+                    console.error('YouTube 播放器 iframe 未找到');
+                }
             }
         });
 
         trig.addEventListener('mouseleave', () => {
-            console.log('Mouse Leave:', trig); // 调试日志
+            console.log('Mouse Leave:', trig);
             trig.classList.remove('active');
-            stopTrack(); // 停止音乐
+            // 停止 YouTube 音频
+            const youtubePlayer = document.getElementById("youtubePlayer");
+            if (youtubePlayer) {
+                youtubePlayer.src = '';
+            }
         });
     });
 }
