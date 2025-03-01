@@ -18,7 +18,7 @@ function Home() {
 
     const playYouTubeAudio = (youtubeId) => {
         if (!youtubeId) {
-            console.warn("⚠️ YouTube ID 不存在，无法播放");
+            console.warn("YouTube ID 不存在，无法播放");
             return;
         }
 
