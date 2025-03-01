@@ -1,7 +1,7 @@
 import './Home.css';
 import '../../styles/global.css';
 import { useEffect, useState } from 'react';
-import { initImageHoverEffect } from '../../../public/js/imageHoverEffect';
+import { initImageHoverEffect } from '../../utils/imageHoverEffect';
 
 function Home() {
     const [tracks, setTracks] = useState([]);
@@ -18,7 +18,7 @@ function Home() {
 
     const playYouTubeAudio = (youtubeId) => {
         if (!youtubeId) {
-            console.warn("YouTube ID 不存在，无法播放");
+            console.warn("⚠️ YouTube ID 不存在，无法播放");
             return;
         }
 

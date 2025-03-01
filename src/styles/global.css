@@ -3,8 +3,9 @@
 @import url('https://unpkg.com/ress/dist/ress.min.css');
 
 :root {
-    /* --textColor: #fe9328; */
-    --textColor: #3f62ff;
+    --textColor: #fe9328;
+    /* --textColor: #ffffff;
+    --bgColor: #0000d7; */
 }
 li {
     list-style: none;
@@ -20,4 +21,5 @@ body {
     margin: 0;
     background-image: url(../../public/images/bg.png);
     background-size: cover;
+    /* background-color: var(--bgColor); */
 }
