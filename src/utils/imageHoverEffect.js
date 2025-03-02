@@ -48,9 +48,6 @@ export function initImageHoverEffect(tracks) {
             // 停止 YouTube 播放
             if (youtubePlayer) {
                 youtubePlayer.src = '';
-                if (youtubePlayer.stopVideo) {
-                    youtubePlayer.stopVideo(); 
-                }
             }
         });
     });
