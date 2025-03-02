@@ -52,7 +52,7 @@ h3{
 .li_group{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 span{
     flex: right;
@@ -81,3 +81,17 @@ span{
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
+
+/* #cursor
+================================================== */
+.blinking-cursor {
+    display: inline-block;
+    width: 8px;
+    animation: blink 0.7s infinite;
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }

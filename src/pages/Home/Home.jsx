@@ -57,7 +57,7 @@ function Home() {
                             >
                                 <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
                                 <div className='li_group'>
-                                    <a href='www.ls2396.cn' target='_blank'>{track.title}</a>
+                                    <p>{track.title}</p>
                                     <span>{track.date}</span>
                                 </div>
                             </li>
