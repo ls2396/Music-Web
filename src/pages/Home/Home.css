@@ -4,14 +4,19 @@
     margin: 50px auto 0;
     position: relative;
 }
-
 .home_left {
     position: sticky;
     top: 50px;
     align-self: flex-start;
     margin-right: 9rem;
+    color: var(--textColor);
+    white-space: pre-wrap;
 }
-
+.home_left p,
+.home_left a {
+    opacity: 0; 
+    animation: fadeIn 0.5s forwards; 
+}
 p,
 a,
 h3,
@@ -20,33 +25,17 @@ span {
     line-height: 1.6;
     font-size: 14px;
 }
-
 p:first-child {
     margin-bottom: 2rem;
 }
-
-p:nth-child(2),
-p:nth-child(3),
-p:nth-child(6),
-.home_left a {
-    margin-bottom: 3.5rem;
-}
-
-p:nth-child(4),
-p:nth-child(7) {
-    margin-bottom: 0.3rem;
-}
-
 a {
     display: inline-block;
     cursor: pointer;
     text-decoration: underline;
 }
-
 a:hover {
     text-decoration: underline solid var(--textColor);
 }
-
 p:nth-child(8) {
     margin-bottom: 7.5rem;
 }
@@ -57,13 +46,11 @@ h3 {
     font-size: 8px;
     margin-bottom: 1.5rem;
 }
-
 .li_group {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2rem;
 }
-
 span {
     flex: right;
 }
@@ -76,7 +63,6 @@ span {
     right: 50px;
     z-index: 1;
 }
-
 .home_right img {
     width: 380px;
     height: 380px;
@@ -85,12 +71,15 @@ span {
     right: 0;
     transition: opacity 0.2s ease;
 }
-
 .hidden {
     opacity: 0;
 }
-
 .img_reveal-hover {
     cursor: pointer;
     transition: background-color 0.2s ease;
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
 }

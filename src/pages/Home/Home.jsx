@@ -2,6 +2,7 @@ import './Home.css';
 import '../../styles/global.css';
 import { useEffect, useState } from 'react';
 import { initImageHoverEffect } from '../../utils/imageHoverEffect';
+import { initTypewriterEffect } from '../../utils/startTypingEffect';
 
 function Home() {
     const [tracks, setTracks] = useState([]);
@@ -11,7 +12,6 @@ function Home() {
             .then(response => response.json())
             .then(data => {
                 setTracks(data);
-                // 使用 requestAnimationFrame 确保 DOM 渲染完成
                 requestAnimationFrame(() => {
                     if (data.length > 0) {
                         initImageHoverEffect(data);
@@ -19,6 +19,8 @@ function Home() {
                 });
             })
             .catch(error => console.error("❌ 加载歌曲列表失败:", error));
+
+        initTypewriterEffect('.home_left', 20);
     }, []);
 
     const playYouTubeAudio = (youtubeId) => {
@@ -41,13 +43,11 @@ function Home() {
         <div className='home'>
             <div className='home_left'>
                 <p>L.J-Sin / Music Collection Hall</p>
-                <p>For me, as a designer—and not just a designer—music <br /> is an essential part of my life. Whenever I listen <br /> to music, I am drawn into the song by the singer’s <br /> voice, immersing myself in the melody, lyrics, and <br /> everything else.</p>
+                <p>For me, as a designer—and not just a designer—music<br /> is an essential part of my life. Whenever I listen <br /> to music, I am drawn into the song by the singer’s <br /> voice, immersing myself in the melody, lyrics, and <br /> everything else.</p>
                 <p>~~~~~~~~</p>
-                <p>For more of my work, please check out my portfolio: </p>
-                <a href='www.ls2396.cn' target='_blank'>www.ls2396.cn ⭕️</a>
+                <p>For more of my work, please check out my portfolio: <br /> <a href='www.ls2396.cn' target='_blank'>www.ls2396.cn ⭕️</a></p>
                 <p>---</p>
-                <p>·E-Mail: senli2396@gmail.com 💻📮</p>
-                <p>·Telephone: 090-6351-5687 🔗🎨</p>
+                <p>·E-Mail: senli2396@gmail.com 💻📮 <br />·Telephone: 090-6351-5687 🔗🎨  <br /> </p>
                 <p>@ All Right Reserved.</p>
             </div>
             <div className='home_middle'>
