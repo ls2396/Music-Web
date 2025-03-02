@@ -11,7 +11,12 @@ function Home() {
             .then(response => response.json())
             .then(data => {
                 setTracks(data);
-                initImageHoverEffect(data);
+                // 使用 requestAnimationFrame 确保 DOM 渲染完成
+                requestAnimationFrame(() => {
+                    if (data.length > 0) {
+                        initImageHoverEffect(data);
+                    }
+                });
             })
             .catch(error => console.error("❌ 加载歌曲列表失败:", error));
     }, []);
