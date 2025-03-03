@@ -1,25 +1,9 @@
-/* 控制 home_middle 和 home_right 的显示 */
-.home_middle,
-.home_right {
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    pointer-events: none; /* 禁用交互 */
-}
-
-.home_middle.visible,
-.home_right.visible {
-    opacity: 1;
-    pointer-events: auto; /* 启用交互 */
-}
-
-/* 其他样式保持不变 */
 .home {
     width: calc(100% - 100px);
     display: flex;
     margin: 50px auto 0;
     position: relative;
 }
-
 .home_left {
     position: sticky;
     top: 50px;
@@ -27,76 +11,56 @@
     margin-right: 9rem;
     color: var(--textColor);
     white-space: pre-wrap;
+    line-height: 1.6;
+    font-size: 13px;
+    white-space: pre;
+    width: 280px;
 }
-
 .home_left p,
 .home_left a {
     opacity: 0; 
-    animation: fadeIn 0.5s forwards; 
+    animation: fadeIn 0.4s forwards; 
 }
-
 p,
 a,
 h3,
 span {
     color: var(--textColor);
-    line-height: 2;
-    font-size: 15px;
+    line-height: 1.6;
+    font-size: 13px;
 }
-
 p:first-child {
     margin-bottom: 2rem;
 }
-
-a {
-    display: inline-block;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-a:hover {
-    text-decoration: underline solid var(--textColor);
-}
-
-p:nth-child(8) {
-    margin-bottom: 7.5rem;
-}
-
-/* #home_middle
-================================================== */
 .home_middle {
     opacity: 0;
     transition: opacity 0.2s ease;
+    pointer-events: none;
 }
-
 .home_middle.visible {
     opacity: 1; 
 }
-
 h3 {
     font-size: 8px;
     margin-bottom: 1.5rem;
 }
-
 .li_group {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
 }
-
 span {
     flex: right;
 }
-
-/* #home_right
-================================================== */
 .home_right {
     position: fixed;
     top: 50px;
     right: 50px;
     z-index: 1;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
 }
-
 .home_right img {
     width: 380px;
     height: 380px;
@@ -105,26 +69,15 @@ span {
     right: 0;
     transition: opacity 0.2s ease;
 }
-
 .hidden {
     opacity: 0;
 }
-
-.img_reveal-hover {
+.li_group p {
     cursor: pointer;
-    transition: background-color 0.2s ease;
 }
 
-/* cursor
-================================================== */
-.blinking-cursor {
-    display: inline-block;
-    width: 8px;
-    animation: blink 0.7s infinite;
-}
-
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
+.home_middle.visible,
+.home_right.visible {
+    opacity: 1;
+    pointer-events: auto;
 }

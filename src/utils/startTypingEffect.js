@@ -5,14 +5,12 @@ export function initTypewriterEffect(selector, speed = 20, onComplete) {
         return;
     }
 
-    // 避免重复执行
     if (element.dataset.typed === "true") {
         console.warn("Typewriter effect already executed on:", selector);
         return;
     }
     element.dataset.typed = "true";
 
-    // 存储原始文本，防止 innerHTML 造成重复
     if (!element.dataset.originalText) {
         element.dataset.originalText = element.innerText.trim(); 
     }
