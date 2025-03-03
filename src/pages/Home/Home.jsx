@@ -40,13 +40,13 @@ function Home() {
         <div className='home'>
             <div className='home_left'>
                 <p>L.J-Sin / Music Collection Hall</p>
-                <p>For me, as a designer—and not just adesigner—music <br />is an essential part of my life. Whenever I listen <br />to music, I am drawn into the song by the singer’s <br />voice, immersing myself in the melody, lyrics, <br />and everything else.</p>
+                <p>For me, as a designer—and not just adesigner—music <br />is an essential part of my life. Whenever I listen <br />to music, I am drawn into the song by the singer’s <br />voice, immersing myself in the melody, lyrics, and <br />everything else.</p>
                 <p>~~~~~~~~</p>
                 <p>For more of my work, please check out my portfolio: <br />
-                    <a href='https://www.ls2396.cn' target='_blank' rel='noopener noreferrer'>www.ls2396.cn ⭕️</a>
+                    <a href='http://www.ls2396.cn/' target='_blank' rel='noopener noreferrer'>www.ls2396.cn ⭕️</a>
                 </p>
                 <p>---</p>
-                <p>·E-Mail: senli2396@gmail.com 💻📮 <br />·Telephone: 090-6351-5687 🔗🎨 </p><br />
+                <p>·E-Mail: senli2396@gmail.com 💻📮 <br />·Telephone: 090-6351-5687 🔗🎨 </p>
                 <p>@ All Right Reserved.</p>
             </div>
             <div className={`home_middle ${showMiddle ? 'visible' : ''}`}>
@@ -55,7 +55,7 @@ function Home() {
                     <ul>
                         {tracks.map(track => (
                             <li key={track.youtubeId} className='img_reveal-hover'>
-                                <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
+                                <h3>♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣</h3>
                                 <div className='li_group'>
                                     <p className="hover-effect-text">{track.title}</p>
                                     <span>{track.date}</span>

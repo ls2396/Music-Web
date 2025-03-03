@@ -4,7 +4,7 @@
 
 :root {
     --textColor: #ffffff;
-    --bgColor: #0000d7; 
+    --bgColor: #0000f1; 
 }
 li {
     list-style: none;
@@ -19,6 +19,4 @@ body {
     font-family: 'DotGothic16', sans-serif;
     box-sizing: border-box;
     margin: 0;
-    background-image: url(../../public/images/bg.png);
-    background-size: cover;
 }
