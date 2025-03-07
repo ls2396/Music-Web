@@ -8,7 +8,8 @@ import { initHoverEffectText } from '../../utils/hoverEffectText';
 function Home() {
     const [tracks, setTracks] = useState([]);
     const [showMiddle, setShowMiddle] = useState(false);
-    const [showRight, setShowRight] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [currentImage, setCurrentImage] = useState(null);
 
     useEffect(() => {
         fetch('/src/assets/youtubeTracks.json')
@@ -29,12 +30,29 @@ function Home() {
                 console.log("Typewriter effect completed, setting showMiddle and showRight to true");
                 setTimeout(() => {
                     setShowMiddle(true);
-                    setShowRight(true);
                     initHoverEffectText();
                 }, 500);
             });
         }
     }, []);
+
+    const handleMouseEnter = (track, index) => {
+        const player = document.getElementById("youtubePlayer");
+        if (player) {
+            player.src = `https://www.youtube.com/embed/${track.youtubeId}?autoplay=1`;
+            setIsPlaying(true);
+            setCurrentImage(index + 1);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        const player = document.getElementById("youtubePlayer");
+        if (player) {
+            player.src = "about:blank";
+            setIsPlaying(false);
+            setCurrentImage(null);
+        }
+    };
 
     return (
         <div className='home'>
@@ -53,10 +71,13 @@ function Home() {
                 <p>Name / Album</p>
                 <div className='title'>
                     <ul>
-                        {tracks.map(track => (
-                            <li key={track.youtubeId} className='img_reveal-hover'>
-                                <h3 data-text="♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣"
-                                    data-text-medium="♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣"
+                        {tracks.map((track, index) => (
+                            <li key={track.youtubeId} className='img_reveal-hover'
+                                onMouseEnter={() => handleMouseEnter(track, index)}
+                                onMouseLeave={handleMouseLeave}
+                            >
+                                <h3 data-text="♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣"
+                                    data-text-medium="♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣"
                                     data-text-small="♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣"></h3>
                                 <div className='li_group'>
                                     <p className="hover-effect-text">{track.title}</p>
@@ -67,10 +88,11 @@ function Home() {
                     </ul>
                 </div>
             </div>
-            <div className={`home_right ${showRight ? 'visible' : ''}`}>
-                {Array.from({ length: 16 }).map((_, index) => (
-                    <img key={index} className='img_reveal hidden' src={`/images/${index + 1}.png`} alt="" />
-                ))}
+            <div className={`home_right ${isPlaying ? 'visible' : ''}`}>
+                {currentImage && (
+                    <img className='img_reveal album-cover' src={`/images/${currentImage}.png`} alt="Album Cover" />
+                )}
+                <img className={`record ${isPlaying ? 'spinning' : ''}`} src="/public/images/record.png" alt="Spinning Record" />
             </div>
             <iframe
                 id="youtubePlayer"

@@ -25,7 +25,7 @@
     .home_left p,
     .home_left a {
         opacity: 0;
-        animation: fadeIn 0.4s forwards;
+        animation: fadeIn 0.2s forwards;
     }
     p,
     a,
@@ -64,6 +64,9 @@
         justify-content: space-between;
         margin-bottom: 1.5rem;
     }
+    .li_group p {
+        cursor: pointer;
+    }
     span {
         flex: right;
     }
@@ -76,24 +79,34 @@
         position: fixed;
         top: 50px;
         right: 50px;
-        z-index: 1;
+        z-index: 10;
         opacity: 0;
-        transition: opacity 0.2s ease;
-        pointer-events: none;
+        transition: opacity 0.2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-    .home_right img {
+    .img_reveal {
         width: 380px;
         height: 380px;
         position: absolute;
         top: 0;
         right: 0;
         transition: opacity 0.2s ease;
+        z-index: 2;
     }
-    .hidden {
+    .record {
+        width: 320px;
+        height: 320px;
         opacity: 0;
+        position: absolute;
+        top: 200px;
+        right: 30px;
     }
-    .li_group p {
-        cursor: pointer;
+    .record.spinning {
+        opacity: 1;
+        animation: spin 2s linear infinite;
     }
 }
 @media screen and (max-width:1179px) and (min-width:502px) {
@@ -162,6 +175,9 @@
         justify-content: space-between;
         margin-bottom: 1.5rem;
     }
+    .li_group p {
+        cursor: pointer;
+    }
     span {
         flex: right;
     }
@@ -174,24 +190,34 @@
         position: fixed;
         top: 50px;
         right: 50px;
-        z-index: 1;
+        z-index: 10;
         opacity: 0;
-        transition: opacity 0.2s ease;
-        pointer-events: none;
+        transition: opacity 0.2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-    .home_right img {
-        width: 380px;
-        height: 380px;
+    .img_reveal {
+        width: 360px;
+        height: 360px;
         position: absolute;
         top: 0;
         right: 0;
         transition: opacity 0.2s ease;
+        z-index: 2;
     }
-    .hidden {
+    .record {
+        width: 300px;
+        height: 300px;
         opacity: 0;
+        position: absolute;
+        top: 188px;
+        right: 28px;
     }
-    .li_group p {
-        cursor: pointer;
+    .record.spinning {
+        opacity: 1;
+        animation: spin 2s linear infinite;
     }
 }
 @media screen and (max-width:501px) {
@@ -253,8 +279,11 @@
         justify-content: space-between;
         margin-bottom: 1.5rem;
     }
+    .li_group p {
+        cursor: pointer;
+    }
     .img_reveal-hover:nth-child(16){
-        margin-bottom: 8rem;
+        margin-bottom: 14rem;
     }
     span {
         flex: right;
@@ -264,29 +293,41 @@
         opacity: 1;
         pointer-events: auto;
     }
+
     .home_right {
         position: fixed;
-        bottom: 264px;
+        bottom: 342px;
         left: 264px;
-        z-index: 1;
+        z-index: 10;
         opacity: 0;
-        transition: opacity 0.2s ease;
-        pointer-events: none;
+        transition: opacity 0.2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
-    .home_right img {
+    .img_reveal {
         width: 240px;
         height: 240px;
         position: absolute;
         top: 0;
         right: 0;
         transition: opacity 0.2s ease;
+        z-index: 2;
     }
-    .hidden {
+    .record {
+        width: 200px;
+        height: 200px;
         opacity: 0;
+        position: absolute;
+        top: 112px;
+        right: 20px;
     }
-    .li_group p {
-        cursor: pointer;
+    .record.spinning {
+        opacity: 1;
+        animation: spin 2s linear infinite;
     }
+
 }
 /* cursor
 ================================================== */
@@ -300,3 +341,14 @@
         opacity: 0;
     }
 }
+
+/* record
+================================================== */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+
+
