@@ -11,6 +11,10 @@ const Router = createBrowserRouter([
         path: '/home',
         element: <Home />
     }
-]);
+],
+    {
+        basename: "/Music-Web/"
+    }
+);
 
 export default Router;
