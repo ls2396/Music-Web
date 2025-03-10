@@ -9,6 +9,7 @@ function Home() {
     const [tracks, setTracks] = useState([]);
     const [showMiddle, setShowMiddle] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [currentTrack, setCurrentTrack] = useState(null);
     const [currentImage, setCurrentImage] = useState(null);
 
     useEffect(() => {
@@ -41,6 +42,7 @@ function Home() {
         if (player) {
             player.src = `https://www.youtube.com/embed/${track.youtubeId}?autoplay=1`;
             setIsPlaying(true);
+            setCurrentTrack(track);
             setCurrentImage(index + 1);
         }
     };
@@ -50,6 +52,7 @@ function Home() {
         if (player) {
             player.src = "about:blank";
             setIsPlaying(false);
+            setCurrentTrack(null);
             setCurrentImage(null);
         }
     };
@@ -58,7 +61,7 @@ function Home() {
         <div className='home'>
             <div className='home_left'>
                 <p>L.J-Sin / Music Collection Hall</p>
-                <p>For me, as a designer—and not just adesigner—music <br />is an essential part of my life. Whenever I listen <br />to music, I am drawn into the song by the singer’s <br />voice, immersing myself in the melody, lyrics, and <br />everything else.</p>
+                <p>For me, as a designer—and not just a designer—music <br />is an essential part of my life. Whenever I listen <br />to music, I am drawn into the song by the singer’s <br />voice, immersing myself in the melody, lyrics, and <br />everything else.</p>
                 <p>~~~~~~~~</p>
                 <p>For more of my work, please check out my portfolio: <br />
                     <a href='http://www.ls2396.cn/' target='_blank' rel='noopener noreferrer'>www.ls2396.cn ⭕️</a>
@@ -78,7 +81,7 @@ function Home() {
                             >
                                 <h3 data-text="♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣"
                                     data-text-medium="♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣"
-                                    data-text-small="♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣"></h3>
+                                    data-text-small="♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣♣"></h3>
                                 <div className='li_group'>
                                     <p className="hover-effect-text">{track.title}</p>
                                     <span>{track.date}</span>
@@ -89,6 +92,9 @@ function Home() {
                 </div>
             </div>
             <div className={`home_right ${isPlaying ? 'visible' : ''}`}>
+                {currentTrack && (
+                    <p className="current-track-title">{currentTrack.title}</p>
+                )}
                 {currentImage && (
                     <img className='img_reveal album-cover' src={`/images/${currentImage}.png`} alt="Album Cover" />
                 )}

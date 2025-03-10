@@ -1,8 +1,4 @@
 @media screen and (min-width:1180px) {
-    body {
-        background-image: url(../../public/images/bg.png);
-        background-size: cover;
-    }
     .home {
         width: calc(100% - 100px);
         display: flex;
@@ -110,10 +106,6 @@
     }
 }
 @media screen and (max-width:1179px) and (min-width:502px) {
-    body {
-        background-image: url(../../public/images/bg.png);
-        background-size: cover;
-    }
     .home {
         width: calc(100% - 100px);
         display: flex;
@@ -221,9 +213,6 @@
     }
 }
 @media screen and (max-width:501px) {
-    body {
-        background-color: var(--bgColor);
-    }
     .home {
         width: calc(100% - 64px);
         display: flex;
@@ -296,12 +285,12 @@
 
     .home_right {
         position: fixed;
-        bottom: 342px;
-        left: 264px;
+        bottom: 292px;
+        right: 32px;
         z-index: 10;
         opacity: 0;
         transition: opacity 0.2s ease-in-out;
-        display: flex;
+        /* display: flex; */
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -347,6 +336,12 @@
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+.current-track-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 

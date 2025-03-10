@@ -1,15 +1,15 @@
+import Loading from '../pages/Loading/Loading';
 import Home from '../pages/Home/Home';
-import Songs from '../pages/Songs/Songs';
 import { createBrowserRouter } from "react-router-dom";
 
 const Router = createBrowserRouter([
     {
         path: '/',
-        element: <Home />,
+        element: <Loading />,
     },
     {
-        path: '/songs',
-        element: <Songs />
+        path: '/home',
+        element: <Home />
     }
 ]);
 
