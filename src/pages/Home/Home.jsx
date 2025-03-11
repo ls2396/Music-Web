@@ -13,8 +13,8 @@ function Home() {
     const [currentImage, setCurrentImage] = useState(null);
 
     useEffect(() => {
-        fetch('/Music-Web/assets/youtubeTracks.json')    
-            .then(response => response.json())
+        fetch(`${import.meta.env.BASE_URL}assets/youtubeTracks.json`)
+        .then(response => response.json())
             .then(data => {
                 console.log("Tracks data loaded:", data);
                 setTracks(data);
