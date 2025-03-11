@@ -13,7 +13,7 @@ function Home() {
     const [currentImage, setCurrentImage] = useState(null);
 
     useEffect(() => {
-        fetch(`${import.meta.env.BASE_URL}assets/youtubeTracks.json`)
+        fetch("/youtubeTracks.json")
         .then(response => response.json())
             .then(data => {
                 console.log("Tracks data loaded:", data);
@@ -96,9 +96,9 @@ function Home() {
                     <p className="current-track-title">{currentTrack.title}</p>
                 )}
                 {currentImage && (
-                    <img className='img_reveal album-cover' src={`${import.meta.env.BASE_URL}images/${currentImage}.png`} alt="Album Cover" />
+                    <img className='img_reveal album-cover' src={`/images/${currentImage}.png`} alt="Album Cover" />
                 )}
-                <img className={`record ${isPlaying ? 'spinning' : ''}`} src="/Music-Web/images/record.png" />
+                <img className={`record ${isPlaying ? 'spinning' : ''}`} src="/images/record.png" />
             </div>
             <iframe
                 id="youtubePlayer"
