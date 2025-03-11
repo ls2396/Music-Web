@@ -1,0 +1,13 @@
+
+> music-website@0.0.0 build
+> vite build
+
+vite v6.2.1 building for production...
+file:///Users/lisenmac/Documents/Front%20end/react_music/music-website/node_modules/vite/dist/node/chunks/dep-glQox-ep.js:41878
+                          new Error(`Failed to resolve ${url} from ${id}`)
+                          ^
+
+Error: Failed to resolve /Music-Web/assets/index-1v2V1C6F.js from /Users/lisenmac/Documents/Front end/react_music/music-website/index.html
+    at file:///Users/lisenmac/Documents/Front%20end/react_music/music-website/node_modules/vite/dist/node/chunks/dep-glQox-ep.js:41878:27
+
+Node.js v20.18.3
