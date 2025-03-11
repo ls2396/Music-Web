@@ -5,14 +5,12 @@ import path from "path";
 export default defineConfig({
   base: "/Music-Web/",
   plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-    },
-  },
   build: {
     outDir: "dist",
     assetsDir: "assets",
     emptyOutDir: true,
-  }
+    rollupOptions: {
+      input: path.resolve(__dirname, "index.html"),
+    },
+  },
 });
