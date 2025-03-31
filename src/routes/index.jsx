@@ -2,11 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import Loading from "../pages/Loading/Loading";
 import Home from "../pages/Home/Home";
 
+const hasVisited = localStorage.getItem("hasVisited");
+
 const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <Loading />,
+      element: hasVisited ? <Home /> : <Loading />,
     },
     {
       path: "/home",
@@ -14,7 +16,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: "/", 
+    basename: "/Music-Web", 
   }
 );
 

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ls2396.github.io/Music-Web/",
+  "homepage": "https://ls2396.github.io/Music-Web",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,8 +14,8 @@
   "dependencies": {
     "axios": "^1.8.1",
     "gsap": "^3.12.7",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-router-dom": "^7.2.0"
   },
   "devDependencies": {

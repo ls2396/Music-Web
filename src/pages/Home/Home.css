@@ -39,10 +39,12 @@
         transition: opacity 0.2s ease;
         pointer-events: none;
         position: relative;
-        transition: all 0.4s ease;
     }
     .home_middle.visible {
         opacity: 1;
+    }
+    .home_middle>ul {
+        padding-left: 0px;
     }
     h3 {
         font-size: 8px;
@@ -151,6 +153,9 @@
     .home_middle.visible {
         opacity: 1;
     }
+    .home_middle>ul {
+        padding-left: 0px;
+    }
     h3 {
         font-size: 8px;
         margin-bottom: 1.5rem;
@@ -251,6 +256,9 @@
     }
     .home_middle.visible {
         opacity: 1;
+    }
+    .home_middle>ul {
+        padding-left: 0px;
     }
     h3 {
         font-size: 8px;

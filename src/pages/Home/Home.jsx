@@ -1,5 +1,5 @@
 import './Home.css';
-import '../../styles/global.css';
+import '@/styles/global.css';
 import { useEffect, useState } from 'react';
 import { initImageHoverEffect } from '../../utils/imageHoverEffect';
 import { initTypewriterEffect } from '../../utils/startTypingEffect';
@@ -12,9 +12,11 @@ function Home() {
     const [currentTrack, setCurrentTrack] = useState(null);
     const [currentImage, setCurrentImage] = useState(null);
 
+    const getImagePath = (name) => `/images/${name}.png`;
+
     useEffect(() => {
-        fetch("/youtubeTracks.json")
-        .then(response => response.json())
+        fetch(`${import.meta.env.BASE_URL}youtubeTracks.json`)
+            .then(response => response.json())
             .then(data => {
                 console.log("Tracks data loaded:", data);
                 setTracks(data);
@@ -43,7 +45,7 @@ function Home() {
             player.src = `https://www.youtube.com/embed/${track.youtubeId}?autoplay=1`;
             setIsPlaying(true);
             setCurrentTrack(track);
-            setCurrentImage(index + 1);
+            setCurrentImage(index + 1); 
         }
     };
 
@@ -70,6 +72,7 @@ function Home() {
                 <p>·E-Mail: senli2396@gmail.com 💻📮 <br />·Telephone: 090-6351-5687 🔗🎨 </p>
                 <p>@ All Right Reserved.</p>
             </div>
+
             <div className={`home_middle ${showMiddle ? 'visible' : ''}`}>
                 <p>Name / Album</p>
                 <div className='title'>
@@ -91,15 +94,25 @@ function Home() {
                     </ul>
                 </div>
             </div>
+
             <div className={`home_right ${isPlaying ? 'visible' : ''}`}>
                 {currentTrack && (
                     <p className="current-track-title">{currentTrack.title}</p>
                 )}
                 {currentImage && (
-                    <img className='img_reveal album-cover' src={`/images/${currentImage}.png`} alt="Album Cover" />
+                    <img
+                        className='img_reveal album-cover'
+                        src={getImagePath(currentImage)}
+                        alt="Album Cover"
+                    />
                 )}
-                <img className={`record ${isPlaying ? 'spinning' : ''}`} src="/images/record.png" />
+                <img
+                    className={`record ${isPlaying ? 'spinning' : ''}`}
+                    src={getImagePath('record')}
+                    alt="Record"
+                />
             </div>
+
             <iframe
                 id="youtubePlayer"
                 width="0"

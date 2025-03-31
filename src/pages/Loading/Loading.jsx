@@ -1,5 +1,5 @@
 import './Loading.css';
-import '../../styles/global.css';
+import '@/styles/global.css';
 import { useEffect, useRef, useState } from 'react';
 import { initLoadingTypewriterEffect } from '../../utils/startTypingEffect';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,9 @@ function Loading() {
         if (!document.querySelector('.loading_text').dataset.typed) {
             initLoadingTypewriterEffect('.loading_text', 40, () => {
                 console.log("Loading typewriter effect completed");
+
+                localStorage.setItem("hasVisited", "true");
+                
                 setTimeout(() => {
                     navigate('/home');
                 }, 1200);
