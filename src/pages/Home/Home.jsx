@@ -12,7 +12,7 @@ function Home() {
     const [currentTrack, setCurrentTrack] = useState(null);
     const [currentImage, setCurrentImage] = useState(null);
 
-    const getImagePath = (name) => `/images/${name}.png`;
+    const getImagePath = (name) => `${import.meta.env.BASE_URL}images/${name}.png`;
 
     useEffect(() => {
         fetch(`${import.meta.env.BASE_URL}youtubeTracks.json`)
@@ -45,7 +45,7 @@ function Home() {
             player.src = `https://www.youtube.com/embed/${track.youtubeId}?autoplay=1`;
             setIsPlaying(true);
             setCurrentTrack(track);
-            setCurrentImage(index + 1); 
+            setCurrentImage(index + 1);
         }
     };
 
@@ -102,7 +102,7 @@ function Home() {
                 {currentImage && (
                     <img
                         className='img_reveal album-cover'
-                        src={getImagePath(currentImage)}
+                        src={getImagePath(String(currentImage))}
                         alt="Album Cover"
                     />
                 )}
